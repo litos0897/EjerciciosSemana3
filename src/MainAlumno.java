@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class MainAlumno {
     public static void main(String[] args) {
 
@@ -17,7 +18,6 @@ public class MainAlumno {
         double sumaNota = 0;
         for (int i = 0; i < alumnos.length; i++) {
             sumaNota += alumnos[i].getNota();
-
         }
         double media = sumaNota / alumnos.length;
         System.out.println("La nota media del grupo es: " + media);
@@ -28,12 +28,31 @@ public class MainAlumno {
                 notaMaxima = alumnos[i].getNota();
             }
         }
-        System.out.println("\n Alumno(s) con la nota más alta: ");
+        System.out.println("\nAlumno(s) con la nota más alta: ");
         for (int i = 0; i < alumnos.length; i++) {
             if (alumnos[i].getNota() == notaMaxima) {
-                System.out.println("- " + alumnos[i].getNombre()+" : "+alumnos[i].getNota());
+                System.out.println("- " + alumnos[i].getNombre() + " : " + alumnos[i].getNota());
             }
         }
+        System.out.println("Introduce un nombre");
+        Scanner sc = new Scanner(System.in);
+        String alumnoEntrada = sc.nextLine();
+
+        boolean encontrado=false;
+
+        for (int i = 0; i < alumnos.length; i++) {
+            if (alumnos[i].getNombre().equals(alumnoEntrada)) {
+                System.out.println("El alumno tiene una nota de " + alumnos[i].getNota());
+                encontrado=true;
+                break;
+            }
+        }
+        if (!encontrado){
+            System.out.println("No hay ningún alumno con ese nombre");
+
+            }
+
+        }
     }
-}
+
 

@@ -6,7 +6,6 @@ public class Alumno {
         this.nombre=nombre;
         this.nota=nota;
     }
-
     public double getNota(){
         return nota;
     }
