@@ -22,11 +22,15 @@ public class MainAlumno {
                 jugadores[i].mostrarDatos();
             }
         }
+        System.out.println("\nLes quitamos 10 puntos de vida a los jugdores");
+        for(int i=0;i<jugadores.length;i++){
+            jugadores[i].recibirDanio(10);
+            jugadores[i].mostrarDatos();
+        }
         int contadorMuertos=0;
         for (int i=0; i<jugadores.length;i++){
             if(jugadores[i].getVida()==0){
                 contadorMuertos++;
-
             }
         }
         System.out.println("Cantidad de jugadores muertos: " + contadorMuertos);

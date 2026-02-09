@@ -15,6 +15,13 @@ public class Jugador {
         return nombre;
     }
 
+    public void recibirDanio (int cantidad) {
+        this.vida = vida - cantidad;
+        if (this.vida < 0) {
+            this.vida = 0;
+        }
+    }
+
     public void mostrarDatos() {
         System.out.println("Jugador: " + nombre + " | Vida: " + vida);
     }
