@@ -22,6 +22,15 @@ public class MainAlumno {
                 jugadores[i].mostrarDatos();
             }
         }
+        int contadorMuertos=0;
+        for (int i=0; i<jugadores.length;i++){
+            if(jugadores[i].getVida()==0){
+                contadorMuertos++;
+
+            }
+        }
+        System.out.println("Cantidad de jugadores muertos: " + contadorMuertos);
+
         System.out.println("\n");
         for (int i = 0; i < alumnos.length; i++) {
             if (alumnos[i].getNota() > 5) {
