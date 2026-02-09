@@ -10,6 +10,19 @@ public class MainAlumno {
         alumnos[3] = new Alumno("Iván", 9);
         alumnos[4] = new Alumno("Eduardo", 3);
 
+
+        Jugador[] jugadores=new Jugador[4];
+        jugadores[0]=new Jugador("Juan", 100);
+        jugadores[1]=new Jugador("Fernando", 200);
+        jugadores[2]=new Jugador("Alejandro", 4);
+        jugadores[3]=new Jugador("Gonzalo", 50);
+
+        for (int i=0; i< jugadores.length;i++){
+            if(jugadores[i].getVida()>0){
+                jugadores[i].mostrarDatos();
+            }
+        }
+        System.out.println("\n");
         for (int i = 0; i < alumnos.length; i++) {
             if (alumnos[i].getNota() > 5) {
                 alumnos[i].mostrarDatos();
@@ -34,7 +47,7 @@ public class MainAlumno {
                 System.out.println("- " + alumnos[i].getNombre() + " : " + alumnos[i].getNota());
             }
         }
-        System.out.println("Introduce un nombre");
+        System.out.println("Introduce un nombre:");
         Scanner sc = new Scanner(System.in);
         String alumnoEntrada = sc.nextLine();
 
