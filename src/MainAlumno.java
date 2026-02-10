@@ -1,9 +1,10 @@
 import java.util.Scanner;
+
 public class MainAlumno {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
         Alumno[] alumnos = new Alumno[5];
-
         alumnos[0] = new Alumno("Jose", 8);
         alumnos[1] = new Alumno("Andrés", 6);
         alumnos[2] = new Alumno("Isabella", 5);
@@ -11,25 +12,52 @@ public class MainAlumno {
         alumnos[4] = new Alumno("Eduardo", 3);
 
 
-        Jugador[] jugadores=new Jugador[4];
-        jugadores[0]=new Jugador("Juan", 100);
-        jugadores[1]=new Jugador("Fernando", 200);
-        jugadores[2]=new Jugador("Alejandro", 4);
-        jugadores[3]=new Jugador("Gonzalo", 50);
+        Jugador[] jugadores = new Jugador[4];
+        jugadores[0] = new Jugador("Juan", 100);
+        jugadores[1] = new Jugador("Fernando", 200);
+        jugadores[2] = new Jugador("Alejandro", 4);
+        jugadores[3] = new Jugador("Gonzalo", 50);
 
-        for (int i=0; i< jugadores.length;i++){
-            if(jugadores[i].getVida()>0){
+
+        Producto[] productos = new Producto[3];
+        productos[0] = new Producto("Ratón", 50);
+        productos[1] = new Producto("Reloj", 20);
+        productos[2] = new Producto("Pan", 1);
+
+        System.out.print("Introduce el precio mínimo a buscar: ");
+        double precioMinimo = sc.nextDouble();
+        sc.nextLine();
+
+
+        System.out.println("Productos con precio mayor a " + precioMinimo + ":");
+        for (int i = 0; i < productos.length; i++) {
+            if (productos[i].getPrecio() > precioMinimo) {
+                productos[i].mostrarDatos();
+            }
+        }
+        Producto productoMasCaro = productos[0];
+
+        for (int i = 1; i < productos.length; i++) {
+            if (productos[i].getPrecio() > productoMasCaro.getPrecio()) {
+                productoMasCaro = productos[i];
+            }
+        }
+        System.out.println("El producto más caro es: " + productoMasCaro.getNombre() + " y vale " + productoMasCaro.getPrecio() + " €");
+        System.out.println("\n");
+
+        for (int i = 0; i < jugadores.length; i++) {
+            if (jugadores[i].getVida() > 0) {
                 jugadores[i].mostrarDatos();
             }
         }
         System.out.println("\nLes quitamos 10 puntos de vida a los jugdores");
-        for(int i=0;i<jugadores.length;i++){
+        for (int i = 0; i < jugadores.length; i++) {
             jugadores[i].recibirDanio(10);
             jugadores[i].mostrarDatos();
         }
-        int contadorMuertos=0;
-        for (int i=0; i<jugadores.length;i++){
-            if(jugadores[i].getVida()==0){
+        int contadorMuertos = 0;
+        for (int i = 0; i < jugadores.length; i++) {
+            if (jugadores[i].getVida() == 0) {
                 contadorMuertos++;
             }
         }
@@ -61,24 +89,19 @@ public class MainAlumno {
             }
         }
         System.out.println("Introduce un nombre:");
-        Scanner sc = new Scanner(System.in);
         String alumnoEntrada = sc.nextLine();
 
-        boolean encontrado=false;
+        boolean encontrado = false;
 
         for (int i = 0; i < alumnos.length; i++) {
             if (alumnos[i].getNombre().equals(alumnoEntrada)) {
                 System.out.println("El alumno tiene una nota de " + alumnos[i].getNota());
-                encontrado=true;
+                encontrado = true;
                 break;
             }
         }
-        if (!encontrado){
+        if (!encontrado) {
             System.out.println("No hay ningún alumno con ese nombre");
-
-            }
-
         }
     }
-
-
+}
